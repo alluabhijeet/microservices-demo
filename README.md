@@ -39,4 +39,5 @@ Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
 - **[Kubernetes](https://kubernetes.io)/[GKE](https://cloud.google.com/kubernetes-engine/):**
   The app is designed to run on Kubernetes (both locally on "Docker for
   Desktop", as well as on the cloud with GKE).
+
 ---
