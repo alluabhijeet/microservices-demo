@@ -15,11 +15,11 @@ provider "kubectl" {
 }
 
 data "kubectl_file_documents" "namespace" {
-    content = file("../kubernetes-manifests/argocd/namespace.yaml")
+    content = file("../argocd-bootstrapping/namespace.yaml")
 } 
 
 data "kubectl_file_documents" "argocd" {
-    content = file("../kubernetes-manifests/argocd/install.yaml")
+    content = file("../argocd-bootstrapping/install.yaml")
 }
 
 resource "kubectl_manifest" "namespace" {
@@ -37,15 +37,15 @@ resource "kubectl_manifest" "argocd" {
     override_namespace = "argocd"
 }
 
-data "kubectl_file_documents" "microservices-demo" {
-    content = file("../kubernetes-manifests/argocd/microservices-demo.yaml")
+data "kubectl_file_documents" "app-of-apps" {
+    content = file("../argocd-bootstrapping/app-of-apps.yaml")
 }
 
-resource "kubectl_manifest" "my-nginx-app" {
+resource "kubectl_manifest" "app-of-apps" {
     depends_on = [
       kubectl_manifest.argocd,
     ]
-    count     = length(data.kubectl_file_documents.microservices-demo.documents)
-    yaml_body = element(data.kubectl_file_documents.microservices-demo.documents, count.index)
+    count     = length(data.kubectl_file_documents.app-of-apps.documents)
+    yaml_body = element(data.kubectl_file_documents.app-of-apps.documents, count.index)
     override_namespace = "argocd"
 }
