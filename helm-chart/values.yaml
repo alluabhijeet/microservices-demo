@@ -103,13 +103,13 @@ emailService:
 frontend:
   create: true
   name: frontend
-  externalService: true
+  externalService: false
   cymbalBranding: false
   # One of: local, gcp, aws, azure, onprem, alibaba. When not set, defaults to "local" unless running in GKE, otherwise auto-sets to gcp.
   platform: local
   singleSharedSession: false
   virtualService:
-    create: false
+    create: true
     hosts:
     - "*"
     gateway:
