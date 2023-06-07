@@ -4,7 +4,7 @@ metadata:
   name: frontend-gateway
 spec:
   selector:
-    istio: ingressgateway # use Istio default gateway implementation
+    istio: ingress # use Istio default gateway implementation
   servers:
   - port:
       number: 80
@@ -22,20 +22,6 @@ spec:
   - "*"
   gateways:
   - frontend-gateway
-  http:
-  - route:
-    - destination:
-        host: frontend
-        port:
-          number: 80
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: frontend
-spec:
-  hosts:
-  - "frontend.default.svc.cluster.local"
   http:
   - route:
     - destination:
