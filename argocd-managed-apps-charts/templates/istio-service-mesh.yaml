@@ -13,7 +13,7 @@ spec:
     path: manifests/charts/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: istio-system
   syncPolicy:
     automated:
       selfHeal: true
