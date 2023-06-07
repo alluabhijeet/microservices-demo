@@ -23,8 +23,18 @@ spec:
   gateways:
   - frontend-gateway
   http:
-  - route:
+  - name: "frontend"  
+    route:
     - destination:
         host: frontend
+        port:
+          number: 80
+  - name: "load-generator"
+    match:
+    - uri:
+        prefix: "/locust"
+    route:
+    - destination:
+        host: loadgenerator-7d44d9c4f7-sl4lf
         port:
           number: 80
