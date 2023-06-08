@@ -1,42 +1,42 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-  name: kube-prometheus-stack
-  namespace: argocd
-spec:
-  destination:
-    namespace: monitoring
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    chart: kube-prometheus-stack
-    source:
-      helm:
-        values: |
-          additionalScrapeConfigs:
-          - job_name: 'istiod'
-            kubernetes_sd_configs:
-            - role: endpoints
-              namespaces:
-                names:
-                - istio-system
-            relabel_configs:
-            - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
-              action: keep
-              regex: istiod;http-monitoring
-          - job_name: 'envoy-stats'
-            metrics_path: /stats/prometheus
-            kubernetes_sd_configs:
-            - role: pod
-            relabel_configs:
-            - source_labels: [__meta_kubernetes_pod_container_port_name]
-              action: keep
-              regex: '.*-envoy-prom'
-    repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 42.0.3
-  syncPolicy:
-    syncOptions:
-    - ServerSideApply=true
-    - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+#   name: kube-prometheus-stack
+#   namespace: argocd
+# spec:
+#   destination:
+#     namespace: monitoring
+#     server: https://kubernetes.default.svc
+#   project: default
+#   source:
+#     chart: kube-prometheus-stack
+#     source:
+#       helm:
+#         values: |
+#           additionalScrapeConfigs:
+#           - job_name: 'istiod'
+#             kubernetes_sd_configs:
+#             - role: endpoints
+#               namespaces:
+#                 names:
+#                 - istio-system
+#             relabel_configs:
+#             - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+#               action: keep
+#               regex: istiod;http-monitoring
+#           - job_name: 'envoy-stats'
+#             metrics_path: /stats/prometheus
+#             kubernetes_sd_configs:
+#             - role: pod
+#             relabel_configs:
+#             - source_labels: [__meta_kubernetes_pod_container_port_name]
+#               action: keep
+#               regex: '.*-envoy-prom'
+#     repoURL: https://prometheus-community.github.io/helm-charts
+#     targetRevision: 42.0.3
+#   syncPolicy:
+#     syncOptions:
+#     - ServerSideApply=true
+#     - CreateNamespace=true
