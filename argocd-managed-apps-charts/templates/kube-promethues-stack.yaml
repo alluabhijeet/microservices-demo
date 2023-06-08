@@ -12,7 +12,6 @@ spec:
   project: default
   source:
     chart: kube-prometheus-stack
-    source:
       helm:
         values: |
           additionalScrapeConfigs:
