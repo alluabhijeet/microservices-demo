@@ -12,6 +12,10 @@ spec:
   project: default
   source:
     chart: loki
+    helm:
+      values: |-
+        rbac:
+          pspEnabled: false
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 2.8.2
   syncPolicy:
