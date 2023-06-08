@@ -29,15 +29,15 @@ languages that talk to each other over gRPC.
 [![Architecture of
 microservices](/docs/img/architecture-diagram.png)](/docs/img/architecture-diagram.png)
 
+**ArgoCD Architecture**
 [![Architecture of
 ArgoCD](https://www.cncf.io/wp-content/uploads/2022/08/image1-31.png)](https://www.cncf.io/wp-content/uploads/2022/08/image1-31.png)
-
+**ArgoCD App of Apps Architecture**
 [![Architecture of
 ArgoCD App of Apps](https://argo-cd.readthedocs.io/en/stable/assets/application-of-applications.png)](https://argo-cd.readthedocs.io/en/stable/assets/application-of-applications.png)
 
 
-
-Find **Protocol Buffers Descriptions** at the [`./protos` directory](/protos).
+**Overview of Microservices**
 
 | Service                                              | Language      | Description                                                                                                                       |
 | ---------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
