@@ -14,7 +14,7 @@ spec:
     chart: promtail
     helm:
       parameters:
-      - name: "additionalScrapeConfigs[0]"
+      - name: "config.clients[0].url"
         value: http://loki:3100/loki/api/v1/push
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 6.11.3
