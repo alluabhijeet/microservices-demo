@@ -19,7 +19,7 @@ I use this demo application to demonstrate the use of these tools and technologi
 - **[Jaeger Distributed Tracing]:**
   Jaeger is configured to use monitoring enabled by Istio to surface Distributed Tracing.
 - **[Grafana]:**
-  Grafna is used to monitor application logs stored in Loki and visualize Kubernetes metrics scraped by Prometheus.
+  Grafana is used to monitor application logs stored in Loki and visualize Kubernetes metrics scraped by Prometheus.
 
 ## Architecture
 
