@@ -3,7 +3,7 @@ kind: Application
 metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-  name: loki-stack
+  name: prom-tail
   namespace: argocd
 spec:
   destination:
@@ -11,9 +11,14 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: loki-stack
+    chart: promtail
+    helm:
+      values: |-
+        config:
+           clients:
+             url: http://loki/loki/api/v1/push
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 2.9.10
+    targetRevision: 6.11.3
   syncPolicy:
     syncOptions:
     - ServerSideApply=true
