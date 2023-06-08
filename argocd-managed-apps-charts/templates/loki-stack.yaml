@@ -13,7 +13,7 @@ spec:
   source:
     chart: loki-stack
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 42.0.3
+    targetRevision: 2.9.10
   syncPolicy:
     syncOptions:
     - ServerSideApply=true
