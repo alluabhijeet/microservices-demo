@@ -9,17 +9,17 @@ I use this demo application to demonstrate the use of these tools and technologi
 - **[Kubernetes]:**
   Kubernetes is the main component of this demo project. It ensure the microservices application is highly available, orchestrates self healing and provides a canvas to add on an arsenal of Kubernetes native tools and technologies.
 - **[ArgoCD]:**
-  After the Kubernetes cluster is provisioned using Terraform, I use Kubectl provider within terraform to bootstrap ArgoCD with App of Apps Architecture. This way the project adhers to pure Gitops.
+  After the Kubernetes cluster is provisioned using Terraform, I use Kubectl provider, within Terraform, to bootstrap ArgoCD with App of Apps Architecture. This way the project adhers to pure Gitops.
 - **[Prometheus]:**
   Prometheus is deployed to the Kubernetes cluster using ArgoCD and is configured to scrape Kubernetes cluster metrics, Control plane metrics, Kubernetes nodes metrics, Pod metrics, Application metrics.
 - **[Promtail and Loki]:**
-  Loki is deployed to the Kubernetes cluster using ArgoCD. Promtail is deployed as a daemonset that runs on every node and and it forwards the application logs to Loki.
+  Loki is deployed to the Kubernetes cluster using ArgoCD. Loki is the main server, responsible for storing logs and processing queries. Promtail is deployed as a daemonset that runs on every node and is the agent responsible for gathering logs and sending them to Loki.
 - **[Istio Service Mesh]:**
-  Istio service mesh is deployed to the Kubernetes cluster again using ArgoCD. Envoy sidecars are automatically injected into the all pods to enable black-box monitoring. This means we get 3 out of the four Golden Signals: Error Rate, Latency, and Throughput, without the overhead of instrumenting each application.
+  Istio service mesh is deployed to the Kubernetes cluster again using ArgoCD. A service mesh is a dedicated infrastructure layer that you can add to your applications. It allows you to transparently add capabilities like observability, traffic management, and security, without adding them to your own code. Envoy sidecars are automatically injected into the all pods to enable black-box monitoring. This means we get 3 out of the four Golden Signals: Error Rate, Latency, and Throughput, without the overhead of instrumenting each application.
 - **[Jaeger Distributed Tracing]:**
   Jaeger is configured to use monitoring enabled by Istio to surface Distributed Tracing.
 - **[Grafana]:**
-  Grafna is used to monitor application logs collected in Loki and visualize metrics scraped by Prometheus.
+  Grafna is used to monitor application logs stored in Loki and visualize Kubernetes metrics scraped by Prometheus.
 
 ## Architecture
 
