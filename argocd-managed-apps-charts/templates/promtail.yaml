@@ -15,7 +15,7 @@ spec:
     helm:
       parameters:
       - name: "config.clients[0].url"
-        value: http://loki/api/v1/push
+        value: http://loki/loki/api/v1/push
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 6.11.3
   syncPolicy:
