@@ -13,6 +13,7 @@ spec:
   source:
     repoURL: https://github.com/alluabhijeet/kube-prometheus-helm.git
     targetRevision: HEAD
+     path:
   syncPolicy:
     syncOptions:
     - ServerSideApply=true
