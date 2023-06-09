@@ -122,8 +122,8 @@ spec:
                   source_labels:
                   - __meta_kubernetes_pod_node_name
                   target_label: node
-              - honor_labels: true
-                job_name: kubernetes-services
+              - job_name: kubernetes-services
+                honor_labels: true
                 kubernetes_sd_configs:
                 - role: service
                 metrics_path: /probe
